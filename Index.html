@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Image Link Copier</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .image-card {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .image-card img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .image-card button {
+            padding: 8px 16px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .image-card button:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="image-card">
+            <img src="png1.png" alt="PNG 1">
+            <button onclick="copyLink('png1.png')">Copy Link Address</button>
+        </div>
+        <div class="image-card">
+            <img src="png2.png" alt="PNG 2">
+            <button onclick="copyLink('png2.png')">Copy Link Address</button>
+        </div>
+    </div>
+
+    <script>
+        function copyLink(src) {
+            const fullUrl = window.location.href.replace(/\/[^\/]*$/, '/') + src;
+            navigator.clipboard.writeText(fullUrl)
+                .then(() => alert("Link copied: " + fullUrl))
+                .catch(err => alert("Failed to copy link: " + err));
+        }
+    </script>
+</body>
+</html>
